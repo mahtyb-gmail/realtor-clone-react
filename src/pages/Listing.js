@@ -35,12 +35,17 @@ import Contact from "../components/Contact"
 import Spinner from "../components/Spinner"
 
 export default function Listing() {
+	// Needed variables from imports
 	const auth = getAuth()
 	const params = useParams()
+
+	// State hooks
 	const [listing, setListing] = useState(null)
 	const [loading, setLoading] = useState(true)
 	const [shareLinkCopied, setShareLinkCopied] = useState(false)
 	const [contactLandlord, setContactLandlord] = useState(false)
+
+	// Swiper Initialization
 	SwiperCore.use([Autoplay, Navigation, Pagination])
 
 	useEffect(() => {
