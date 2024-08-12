@@ -1,5 +1,10 @@
+// Standard React Hooks
 import { useEffect, useState } from "react"
+
+// Toast for error and success reporting
 import { toast } from "react-toastify"
+
+// Firebase imports for Firebase/Firestore API
 import {
 	collection,
 	getDocs,
@@ -10,14 +15,18 @@ import {
 	where,
 } from "firebase/firestore"
 import { db } from "../firebase"
+
+// Our Components
+
 import Spinner from "../components/Spinner"
 import ListingItem from "../components/ListingItem"
-import { async } from "@firebase/util"
 
 export default function Offers() {
 	const [listings, setListings] = useState(null)
 	const [loading, setLoading] = useState(true)
 	const [lastFetchedListing, setLastFetchListing] = useState(null)
+
+	// useEffect to run first and load data from Friebase
 	useEffect(() => {
 		async function fetchListings() {
 			try {

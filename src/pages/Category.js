@@ -1,5 +1,10 @@
+// Standard React Hooks
 import { useEffect, useState } from "react"
+
+// Toast for error and success messaging
 import { toast } from "react-toastify"
+
+// Firebase imports
 import {
 	collection,
 	getDocs,
@@ -10,15 +15,25 @@ import {
 	where,
 } from "firebase/firestore"
 import { db } from "../firebase"
+
+// Our components
 import Spinner from "../components/Spinner"
 import ListingItem from "../components/ListingItem"
+
+// Params to decode URL /category/:categoryName
 import { useParams } from "react-router-dom"
 
 export default function Category() {
+	// State Variables
 	const [listings, setListings] = useState(null)
 	const [loading, setLoading] = useState(true)
 	const [lastFetchedListing, setLastFetchListing] = useState(null)
+
+	// Params to decode URL
 	const params = useParams()
+
+	// useEffect to access database on page load
+	// We need params.categoryName in order to form query properly
 	useEffect(() => {
 		async function fetchListings() {
 			try {
